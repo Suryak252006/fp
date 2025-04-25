@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Instagram Audio Downloader</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <!-- jQuery (optional, for flash messages or future enhancements) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <!-- Hamburger menu -->
+  <div class="hamburger" onclick="openNav()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div id="mySidenav" class="side-nav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/">Pro Instagram Downloader</a>
+    <a href="/audio">Instagram Audio Downloader</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+  
+  <header>
+    <h1>Instagram Audio Downloader</h1>
+  </header>
+  
+  <div class="container">
+    <section class="download-section fade-in">
+      <form action="{{ url_for('audio.download_audio') }}" method="post">
+        <label for="url">Instagram Video URL:</label>
+        <input type="text" id="url" name="url" placeholder="Enter Instagram video URL" required>
+        <button type="submit">Download Audio</button>
+      </form>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul class="notification">
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+    </section>
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 Pro Instagram Downloader. All rights reserved.</p>
+  </footer>
+  
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

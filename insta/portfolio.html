@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: -250px;
+      transition: left 0.3s ease;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .hamburger {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+      margin-left: 60px;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      margin: 10px 0;
+    }
+
+    .profile {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+
+  <div class="sidebar" id="sidebar">
+    <div class="profile">
+      <h2>Your Name</h2>
+    </div>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <div class="content">
+    <h1>Welcome to My Portfolio</h1>
+    <p>This is a simple portfolio website with a left-side hamburger menu.</p>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Short bio or description goes here.</p>
+    </section>
+    <section id="projects">
+      <h2>Projects</h2>
+      <p>Details of your work, links, or screenshots can be added here.</p>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email or social media links.</p>
+    </section>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

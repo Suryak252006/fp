@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Color Change</title>
+    <script>
+        function changeColor(event) {
+            document.body.style.backgroundColor = `rgb(${event.clientX % 256}, ${event.clientY % 256}, 150)`;
+        }
+    </script>
+</head>
+<body onmousemove="changeColor(event)">
+    <h2>Move your mouse to change the background color</h2>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Enhanced Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px gray;
+    }
+    input[type=text], input[type=email], input[type=password], input[type=tel] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: teal;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Registration Form</h2>
+  <form onsubmit="return validateForm()">
+    <label>Full Name:</label>
+    <input type="text" id="name" placeholder="Enter your full name">
+
+    <label>Email:</label>
+    <input type="email" id="email" placeholder="Enter your email">
+
+    <label>Phone Number:</label>
+    <input type="tel" id="phone" placeholder="Enter 10-digit phone number">
+
+    <label>Password:</label>
+    <input type="password" id="password" placeholder="Enter password">
+
+    <label>Confirm Password:</label>
+    <input type="password" id="confirmPassword" placeholder="Confirm password">
+
+    <button type="submit">Register</button>
+  </form>
+</div>
+
+<script>
+function validateForm() {
+  var name = document.getElementById("name").value.trim();
+  var email = document.getElementById("email").value.trim();
+  var phone = document.getElementById("phone").value.trim();
+  var password = document.getElementById("password").value;
+  var confirmPassword = document.getElementById("confirmPassword").value;
+
+  // Name: only letters and spaces, min 3 characters
+  var namePattern = /^[a-zA-Z\s]{3,}$/;
+  if (!name.match(namePattern)) {
+    alert("Name must be at least 3 characters and contain only letters and spaces.");
+    return false;
+  }
+
+  // Email validation
+  var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (!email.match(emailPattern)) {
+    alert("Please enter a valid email.");
+    return false;
+  }
+
+  // Phone: 10 digits only
+  var phonePattern = /^[0-9]{10}$/;
+  if (!phone.match(phonePattern)) {
+    alert("Phone number must be exactly 10 digits.");
+    return false;
+  }
+
+  // Password: min 6 chars, at least 1 uppercase, 1 number
+  var passwordPattern = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
+  if (!password.match(passwordPattern)) {
+    alert("Password must be at least 6 characters and include one uppercase letter and one number.");
+    return false;
+  }
+
+  // Confirm password match
+  if (password !== confirmPassword) {
+    alert("Passwords do not match.");
+    return false;
+  }
+
+  alert("Registration Successful!");
+  return true;
+}
+</script>
+
+</body>
+</html>
